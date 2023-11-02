@@ -1,13 +1,51 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@font-face {
+  /* 500 */
+  font-family: "Degular";
+  src: url("./assets/fonts/DegularDemo-Medium.otf");
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  /* 600 */
+  font-family: "DegularSemiBold";
+  src: url("./assets/fonts/DegularDemo-Semibold.otf");
+}
+
+@font-face {
+  /* 700 */
+  font-family: "DegularBold";
+  src: url("./assets/fonts/DegularDemo-Bold.otf");
+}
+
+body {
+  margin: 0;
+  font-family: "Degular";
+  src: url("./assets/fonts/DegularDemo-Regular.otf");
+}
+
+.userBg {
+  background-image: linear-gradient(139deg, #5c6670 2.33%, #131316 96.28%);
+}
+
+.react-datepicker__input-container input {
+  border-radius: 12px;
+  border: 1px solid #eff1f6;
+  background: #eff1f6;
+  /* border: 3px solid #131316;
+  background: #fff; */
+  padding: 14px 16px;
+  color: #131316;
+  width: 100%;
+  font-size: 14px;
+  font-family: "Degular";
+}
+
+.react-datepicker-wrapper {
+  display: inline-block;
+  padding: 0;
+  border: 0;
+  flex-grow: 1;
 }
