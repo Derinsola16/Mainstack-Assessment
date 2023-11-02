@@ -3,6 +3,13 @@ import { getWalletDetails, getTransactionDetails } from "../api/Transaction";
 import { Info, Success, Error, Download, More } from "../icons";
 import moment from "moment";
 import { Filter } from "./Filter";
+import { Chart } from "react-chartjs-2";
+import "chart.js/auto";
+
+// import {
+//   ChartControl,
+//   ChartType,
+// } from "@pnp/spfx-controls-react/lib/ChartControl";
 
 export function Dashboard() {
   const [wallet, setWallet] = useState();
@@ -14,9 +21,19 @@ export function Dashboard() {
     setFilterOpen(false);
   };
 
-  const getCount = (count) => {
-    console.log(count);
-    setCount(count);
+  const getCount = (num) => {
+    setCount(num);
+  };
+
+  const data = {
+    labels: ["Apr 1 ,  2022", "Apr 15", "Apr 17", "Apr 25", "Apr 30 ,  2022",],
+    datasets: [
+      {
+        label: "Example Chart",
+        data: [10.9, 30, 50, 35, 55],
+        backgroundColor: ["red", "blue", "yellow", "green", "purple", "orange"],
+      },
+    ],
   };
 
   useEffect(() => {
@@ -36,7 +53,6 @@ export function Dashboard() {
     async function setTransactionDetails() {
       try {
         const res = await getTransactionDetails();
-        console.log(res);
         if (res.status === 200) {
           setTransactions(res.data);
         }
@@ -47,7 +63,7 @@ export function Dashboard() {
     setTransactionDetails();
   }, []);
   return (
-    <main className="px-20 mt-[64px]">
+    <main className="px-20">
       <div className="flex items-center justify-between gap-x-[124px]">
         <div className="grow">
           <div className="flex items-center gap-x-16">
@@ -63,7 +79,9 @@ export function Dashboard() {
               Withdraw
             </button>
           </div>
-          <div>chart</div>
+          <div>
+            <Chart type="line" data={data} />
+          </div>
         </div>
         <div className="gap-y-8 grow w-[271px]">
           <div>
@@ -108,7 +126,7 @@ export function Dashboard() {
         <div className="flex items-center gap-x-6 mb-[33px]">
           <div className="grow pb-6 border-b border-[#EFF1F6]">
             <p className="font-DegularBold text-2xl text-[#131316] ">
-              24 Transactions
+              {transactions?.length} Transactions
             </p>
             <p className="text-[#56616B] font-Degular text-base">
               Your transactions for the last 7 days

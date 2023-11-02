@@ -1,29 +1,19 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React from "react";
 import { Header } from "./header";
 import { Dashboard } from "./Dashboard";
-import { Filter } from "./Filter";
-import { Select } from "./Select";
 
 export function Layout() {
-  // const status = [
-  //   {
-  //     value: "successful",
-  //     label: "Successful",
-  //   },
-  //   {
-  //     value: "pending",
-  //     label: "Pending",
-  //   },
-  //   {
-  //     value: "failed",
-  //     label: "Failed",
-  //   },
-  // ];
   return (
     <>
-      <Header />
-      <Dashboard />
-      
+      <div className="z-30">
+        <div className="absolute w-full top-0 bg-white">
+          <Header />
+        </div>
+
+        <main className="pt-[10rem] h-screen  overflow-y-scroll">
+          <Dashboard />
+        </main>
+      </div>
     </>
   );
 }
